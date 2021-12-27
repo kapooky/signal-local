@@ -1,0 +1,124 @@
+twilio: # Twilio gateway configuration
+  accountId: unset
+  accountToken: unset
+  numbers: # Numbers allocated in Twilio
+    - # First number
+    - # Second number
+    - # Third number
+    - # ...
+    - # Nth number
+  messagingServicesId: 
+  localDomain: unset
+
+push:
+  queueSize: 10
+
+storageService:
+  userAuthenticationTokenSharedSecret: XXXXXXXXXXXXXXX
+
+backupService:
+  userAuthenticationTokenSharedSecret: 4bf5a2d38ae028b9711e94ceb276a29a%
+
+turn: # TURN server configuration
+  secret: 69 # TURN server secret
+  uris:
+    - stun:yourdomain:80
+    - stun:yourdomain.com:443
+    - turn:yourdomain:443?transport=udp
+    - turn:etc.com:80?transport=udp
+
+cache: # Redis server configuration for cache cluster
+  url: redis://localhost:6379
+  replicaUrls:
+    - redis://localhost:6380
+
+directory:
+  redis: # Redis server configuration for directory cluster
+    url: redis://localhost:6380
+    replicaUrls:
+      - redis://127.0.0.1:6380/directoryReplica
+  client: # Configuration for interfacing with Contact Discovery Service cluster
+    userAuthenticationTokenSharedSecret: b8b269450937d526beb0663bc644e8f0%  # hex-encoded secret shared with CDS used to generate auth tokens for Signal users
+    userAuthenticationTokenUserIdSecret: c3e15c0e11f1ff7dc1aba0cbcc62e556% # hex-encoded secret shared among Signal-Servers to obscure user phone numbers from CDS
+  sqs:
+    accessKey: AKIA23N43W4SHHGZI2ZV
+    accessSecret: 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
+    queueUrl: https://sqs.us-west-2.amazonaws.com/746109777700/test
+  server:
+    replicationUrl: http://127.0.0.1:9090                # CDS replication endpoint base url
+    replicationPassword:  1221       # CDS replication endpoint password
+    replicationCaCertificate:  121    # CDS replication endpoint TLS certificate trust root
+
+recaptcha:
+  secret: 6LdUcc0dAAAAANkqj4aeTEpMbsshXn_BPoc2bMlq # Change this to your Google Recaptcha secret
+
+
+messageCache: # Redis server configuration for message store cache
+  redis:
+    url: redis://127.0.0.1:6379/messageCache
+    replicaUrls:
+      - redis://127.0.0.1:6380/messageCacheReplica
+
+pushScheduler:
+  url: redis://127.0.0.1:6379/pushScheduler
+  replicaUrls:
+    - redis://127.0.0.1:6380/pushSchedulerReplica
+
+unidentifiedDelivery:
+  certificate: CiYI0gkSIQUwJGkdVmHo1N8ZQB2yRSW+JJqMo4FCFQiMunAVsVaSFRJAp3+OYhlAdolJMVbfJb+YUCgmNHPCb/ovrqjn2E1j+XWK6RPpbx0i50LEOzb17Q5vAniThv/mvXvCOpBs6vgThQ== # Change this to your generated certificate
+  privateKey: CCcpmhkv75WgxHXPP9MawpkiKOj45DnLEJjO3YuPbG8= = # Change this to you generated private key
+  expiresDays: 365
+
+accountsDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
+
+keysDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
+
+messageStore:
+  driverClass: org.postgresql.Driver
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
+
+abuseDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres # change to your psql username
+  password:    postgres # change to your psql password
+  url:         jdbc:postgresql://127.0.0.1:5432/signal #change to your psql url, port, and database name
+
+accountDatabaseCrawler:
+  chunkSize:       1000
+  chunkIntervalMs: 1000000
+
+apn: # Apple Push Notifications configuration
+  bundleId: 12
+  pushCertificate: 12
+  pushKey: 12
+
+gcm: # GCM Configuration
+  senderId: 569053232716
+  apiKey: AAAAhH43Pkw:APA91bGXaog-xAIeOARnk6yHYvoy78c5pON_b_bkJ0g5nZKLSy19oo8naZfXIQrSn-E6AX5M-811AJzvshO_ltS8DtWXQWzuXDABXF7fkzDSRLwvHU7Nkh-qG0ckkIwp2PrAWwEf9YKx
+
+voiceVerification:
+  url: https://cdn-ca.signal.org/verification
+  locales:
+    - en
+    -
+attachments: # MinIO configuration
+  accessKey:    Q3AM3UQ867SPQQA43P2F # Default, change to your own access key
+  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # Default, change to your own secret key
+  bucket:       bucket # use your bucket name here
+  region:       us-east-1 # Default region
+
+cdn: # MinIO configuration
+  accessKey:    Q3AM3UQ867SPQQA43P2F # Default, change to your own access key
+  accessSecret: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG # Default, change to your own secret key
+  bucket:       bucket # use your bucket name here
+  region:       us-east-1 # Default region
