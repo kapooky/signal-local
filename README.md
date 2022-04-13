@@ -1,13 +1,15 @@
 On-Premise/local Signal-Server(v2.92) Installation (Work in Progress)
 =================
 
+#### Alert: This project has been deprecated. You will be required to manually agree to the Oracle Licensing Agreement when you build the Android APK. While such a task can be automated, it opens the door for legal consequences. 
+
 Documentation
 -------------
 As of this moment, The Signal Foundation does not provide an official guide to build and deploy their server. This has unfortunately left many people to turn to unofficial guides, which tend to have their own problems such as being outdated and hard to follow. 
 
-My goal of this project is to reduce the learning curve required to build and run the server by making it very easy to deploy. 
+My goal of this project is to reduce the learning curve required to build and run the server by making it very easy to deploy. T
 
-In order to make it very easy to deploy, I will be required to remove out most of the cloud dependencies so the user won't have to sign up to these services. 
+To make it easy to deploy, I will be required to remove out most of the cloud dependencies so the user won't have to sign up to these services. 
 
 
 
@@ -20,8 +22,8 @@ Load balancing of containers can be accomplished using NGINX. For more informati
 
 Faq
 ------------
-Why did I use 2.92?
-The current version of Signal is 7.6, and the one I'm using to 2.92. Why?
+Why did I use v2.92?
+The current version of Signal is v7.6. 
 
 A: 2.92, to my knowledge, is the only signal-server that can be succesfully run AND where CDS(Content Discovery Service) is optional. CDS requires special hardware computer processors for confidental computing. 
 
